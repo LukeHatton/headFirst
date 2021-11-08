@@ -1,10 +1,10 @@
-package com.example.headfirst.duck;
+package com.example.headfirst.strategy.duck;
 
-import com.example.headfirst.duck.fly.CantFly;
-import com.example.headfirst.duck.quack.Quack;
+import com.example.headfirst.strategy.duck.fly.CantFly;
+import com.example.headfirst.strategy.duck.quack.Quack;
 
 /**
- * Package: com.example.headfirst.duck
+ * Package: com.example.headfirst.strategy.duck
  * <p>
  * Description:
  * <p>

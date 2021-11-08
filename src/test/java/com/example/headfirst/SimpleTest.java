@@ -1,12 +1,16 @@
 package com.example.headfirst;
 
-import com.example.headfirst.duck.Duck;
-import com.example.headfirst.duck.FlyableDuck;
-import com.example.headfirst.duck.GreenHeadDuck;
-import com.example.headfirst.duck.RedHeadDuck;
-import com.example.headfirst.duck.RubberDuck;
-import com.example.headfirst.duck.SuperDuck;
-import com.example.headfirst.duck.fly.FlyRocket;
+import com.example.headfirst.strategy.duck.Duck;
+import com.example.headfirst.strategy.duck.FlyableDuck;
+import com.example.headfirst.strategy.duck.GreenHeadDuck;
+import com.example.headfirst.strategy.duck.RedHeadDuck;
+import com.example.headfirst.strategy.duck.RubberDuck;
+import com.example.headfirst.strategy.duck.SuperDuck;
+import com.example.headfirst.strategy.duck.fly.FlyRocket;
+import com.example.headfirst.watcher.bean.WeatherInfo;
+import com.example.headfirst.watcher.interFace.WeatherData;
+import com.example.headfirst.watcher.observer.CurrentConditionDisplay;
+import com.example.headfirst.watcher.observer.Observer;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -49,5 +53,15 @@ public class SimpleTest {
         superDuck.swim();
         superDuck.setFlyAction(new FlyRocket());
         superDuck.fly();
+    }
+
+    /* 观察者测试 */
+    @Test
+    public void test02() {
+        WeatherData weatherData = new WeatherData();
+        CurrentConditionDisplay observer = new CurrentConditionDisplay();
+        weatherData.add(observer);
+        weatherData.setMeasurement(new WeatherInfo(24.4D, 0.4D, 1000D));
+        observer.display();
     }
 }

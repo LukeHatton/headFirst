@@ -1,7 +1,7 @@
-package com.example.headfirst.duck.fly;
+package com.example.headfirst.strategy.duck.fly;
 
 /**
- * Package: com.example.headfirst.duck.fly
+ * Package: com.example.headfirst.strategy.duck.fly
  * <p>Description:
  * <p>User: lizhao 2021/11/7
  */

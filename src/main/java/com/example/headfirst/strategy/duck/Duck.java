@@ -1,10 +1,10 @@
-package com.example.headfirst.duck;
+package com.example.headfirst.strategy.duck;
 
-import com.example.headfirst.duck.fly.FlyAction;
-import com.example.headfirst.duck.quack.QuackAction;
+import com.example.headfirst.strategy.duck.fly.FlyAction;
+import com.example.headfirst.strategy.duck.quack.QuackAction;
 
 /**
- * Package: com.example.headfirst.duck
+ * Package: com.example.headfirst.strategy.duck
  * <p>Description:抽象类：鸭子
  * <p>现在想一想，需要添加两个新的鸭子实现类：会飞的鸭子，和橡皮鸭子。会飞的鸭子能飞，橡皮鸭子叫声和其他鸭子不一样，
  * 那么改怎么实现呢？

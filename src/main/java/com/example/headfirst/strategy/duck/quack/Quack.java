@@ -1,7 +1,7 @@
-package com.example.headfirst.duck.quack;
+package com.example.headfirst.strategy.duck.quack;
 
 /**
- * Package: com.example.headfirst.duck.quack
+ * Package: com.example.headfirst.strategy.duck.quack
  * <p>Description:
  * <p>User: lizhao 2021/11/6
  */
