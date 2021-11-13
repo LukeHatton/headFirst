@@ -1,5 +1,12 @@
 package com.example.headfirst;
 
+import com.example.headfirst.decorator.beverage.Beverage;
+import com.example.headfirst.decorator.beverage.DarkRoast;
+import com.example.headfirst.decorator.beverage.Espresso;
+import com.example.headfirst.decorator.beverage.HouseBlend;
+import com.example.headfirst.decorator.decorator.Mocha;
+import com.example.headfirst.decorator.decorator.Soy;
+import com.example.headfirst.decorator.decorator.Whip;
 import com.example.headfirst.strategy.duck.Duck;
 import com.example.headfirst.strategy.duck.FlyableDuck;
 import com.example.headfirst.strategy.duck.GreenHeadDuck;
@@ -10,7 +17,6 @@ import com.example.headfirst.strategy.duck.fly.FlyRocket;
 import com.example.headfirst.watcher.bean.WeatherInfo;
 import com.example.headfirst.watcher.interFace.WeatherData;
 import com.example.headfirst.watcher.observer.CurrentConditionDisplay;
-import com.example.headfirst.watcher.observer.Observer;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -63,5 +69,26 @@ public class SimpleTest {
         weatherData.add(observer);
         weatherData.setMeasurement(new WeatherInfo(24.4D, 0.4D, 1000D));
         observer.display();
+    }
+
+    /* 装饰者测试 */
+    @Test
+    public void test03() {
+        //一杯Espresso，输出描述与价钱
+        Beverage espresso = new Espresso();
+        System.out.println(espresso.getDescription() + ", $" + espresso.cost());
+
+        //一杯DarkRoast，双份摩卡，一份奶泡
+        Beverage darkRoast = new DarkRoast();
+        Beverage mocha_2 = new Mocha(new Mocha(darkRoast));
+        Beverage darkRoastMochaWhip = new Whip(mocha_2);
+        System.out.println(darkRoastMochaWhip.getDescription() + ", $" + darkRoastMochaWhip.cost());
+
+        //一杯HouseBlend，加豆浆、摩卡、奶泡
+        Beverage houseBlend = new HouseBlend();
+        Beverage withSoy = new Soy(houseBlend);
+        Beverage withMocha = new Mocha(withSoy);
+        Beverage withWhip = new Whip(withMocha);
+        System.out.println(withWhip.getDescription() + ", $" + withWhip.cost());
     }
 }
