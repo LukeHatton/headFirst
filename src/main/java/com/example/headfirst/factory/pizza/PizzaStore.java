@@ -23,5 +23,5 @@ public abstract class PizzaStore {
     }
 
     /* 由子类决定创建Pizza的过程 */
-    abstract Pizza createPizza(String type);
+    public abstract Pizza createPizza(String type);
 }

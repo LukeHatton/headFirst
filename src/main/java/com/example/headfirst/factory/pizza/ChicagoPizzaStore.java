@@ -13,7 +13,7 @@ import com.example.headfirst.factory.bean.Pizza;
  */
 public class ChicagoPizzaStore extends PizzaStore {
     @Override
-    Pizza createPizza(String type) {
+    public Pizza createPizza(String type) {
         Pizza pizza = null;
         switch (type) {
             case "cheese":

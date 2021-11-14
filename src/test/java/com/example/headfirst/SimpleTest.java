@@ -8,6 +8,13 @@ import com.example.headfirst.decorator.beverage.HouseBlend;
 import com.example.headfirst.decorator.decorator.Mocha;
 import com.example.headfirst.decorator.decorator.Soy;
 import com.example.headfirst.decorator.decorator.Whip;
+import com.example.headfirst.factory.ingredient.BlackOlive;
+import com.example.headfirst.factory.ingredient.Onion;
+import com.example.headfirst.factory.ingredient.RedPepper;
+import com.example.headfirst.factory.ingredient.Veggies;
+import com.example.headfirst.factory.ingredient.pizzafactory.IngredientEnum;
+import com.example.headfirst.factory.ingredient.pizzafactory.NewPizza;
+import com.example.headfirst.factory.ingredient.pizzafactory.NewPizzaStore;
 import com.example.headfirst.factory.pizza.ChicagoPizzaStore;
 import com.example.headfirst.factory.pizza.NYPizzaStore;
 import com.example.headfirst.factory.pizza.PizzaStore;
@@ -27,6 +34,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Package: com.example.headfirst
@@ -127,5 +136,26 @@ public class SimpleTest {
         nyPizzaStore.orderPizza("cheese");
         chicagoPizzaStore.orderPizza("cheese");
 
+    }
+
+    /* 工厂模式:抽象工厂 */
+    @Test
+    public void test05() {
+        NewPizzaStore pizzaStore = new com.example.headfirst.factory.ingredient.pizzafactory.NYPizzaStore();
+        NewPizza pizza = pizzaStore.orderPizza(IngredientEnum.CHEESE);
+        System.out.println(pizza);
+    }
+
+    @Test
+    public void test06() {
+        Veggies veggies[] = new Veggies[]{new BlackOlive(), new RedPepper(), new Onion()};
+        String reduce = Arrays.stream(Optional.ofNullable(veggies).orElseGet(() -> new Veggies[]{}))
+                .map(Veggies::getName)
+                .reduce("", (a, b) -> a + b);
+        System.out.println(reduce);
+        System.out.println("----------------------");
+
+        String str = null;
+        System.out.println("gasjdgh" + null != str ? "" : "jkas");
     }
 }
