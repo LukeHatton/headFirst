@@ -8,6 +8,9 @@ import com.example.headfirst.decorator.beverage.HouseBlend;
 import com.example.headfirst.decorator.decorator.Mocha;
 import com.example.headfirst.decorator.decorator.Soy;
 import com.example.headfirst.decorator.decorator.Whip;
+import com.example.headfirst.factory.pizza.ChicagoPizzaStore;
+import com.example.headfirst.factory.pizza.NYPizzaStore;
+import com.example.headfirst.factory.pizza.PizzaStore;
 import com.example.headfirst.strategy.duck.Duck;
 import com.example.headfirst.strategy.duck.FlyableDuck;
 import com.example.headfirst.strategy.duck.GreenHeadDuck;
@@ -111,6 +114,18 @@ public class SimpleTest {
             builder.append((char) c);
         }
         System.out.println(builder);
+
+    }
+
+    /* 工厂模式测试 */
+    @Test
+    public void test04() {
+        //创建工厂:披萨工厂
+        PizzaStore nyPizzaStore = new NYPizzaStore();
+        PizzaStore chicagoPizzaStore = new ChicagoPizzaStore();
+        //生产产品:起司披萨
+        nyPizzaStore.orderPizza("cheese");
+        chicagoPizzaStore.orderPizza("cheese");
 
     }
 }

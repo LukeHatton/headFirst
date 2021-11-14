@@ -9,22 +9,19 @@ import com.example.headfirst.factory.bean.Pizza;
  * <p>Date: 11/14/2021 15:37
  *
  * @author : Zhao Li
- * @version 0.2 使用简单工厂(其实只是抽取代码)
+ * @version 0.3 使用工厂方法模式重写
  */
-public class OrderPizza {
-
-    SimplePizzaFactory simplePizzaFactory;
-
-    public OrderPizza(SimplePizzaFactory simplePizzaFactory) {
-        this.simplePizzaFactory = simplePizzaFactory;
-    }
+public abstract class PizzaStore {
 
     public Pizza orderPizza(String type) {
-        Pizza pizza = simplePizzaFactory.createPizza(type);
+        Pizza pizza = createPizza(type);
         pizza.prepare();
         pizza.bake();
         pizza.cut();
         pizza.box();
         return pizza;
     }
+
+    /* 由子类决定创建Pizza的过程 */
+    abstract Pizza createPizza(String type);
 }
