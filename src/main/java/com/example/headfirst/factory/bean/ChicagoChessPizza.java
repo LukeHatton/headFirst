@@ -2,18 +2,19 @@ package com.example.headfirst.factory.bean;
 
 /**
  * <p>project: headFirst
- * <p>ClassName: ChessPizza
- * <p>Description:
- * <p>Date: 11/14/2021 15:50
+ * <p>ClassName: ChicagoChessPizza
+ * <p>Description:芝加哥风味起司披萨:厚饼
+ * <p>Date: 11/14/2021 16:37
  *
  * @author : Zhao Li
  */
-public class ChessPizza extends Pizza {
+public class ChicagoChessPizza extends Pizza{
+    private final Pizza chessPizza = new ChessPizza();
 
     {
-        name = "起司披萨";
-        dough = "默认面饼";
-        sauce = "默认酱料";
+        name = "芝加哥" + chessPizza.getName();
+        dough = "厚面饼";
+        sauce = "浓芝士";
     }
 
     @Override

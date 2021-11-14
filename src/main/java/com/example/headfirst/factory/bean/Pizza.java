@@ -1,5 +1,7 @@
 package com.example.headfirst.factory.bean;
 
+import lombok.Data;
+
 /**
  * <p>project: headFirst
  * <p>ClassName: Pizza
@@ -8,21 +10,37 @@ package com.example.headfirst.factory.bean;
  *
  * @author : Zhao Li
  */
+@Data
 public abstract class Pizza {
+
+    //披萨名
+    protected String name;
+
+    //面团
+    protected String dough;
+
+    //酱料
+    protected String sauce;
+
     public void prepare() {
-        System.out.print("准备");
+        System.out.println("准备: " + this);
     }
 
     public void bake() {
-        System.out.print("烘烤");
+        System.out.println("烘烤: " + this);
     }
 
     public void cut() {
-        System.out.print("切片");
+        System.out.println("切片: " + this);
     }
 
-    public void box(){
-        System.out.print("装盒");
+    public void box() {
+        System.out.println("装盒: " + this);
+    }
+
+    @Override
+    public String toString() {
+        return "【" + dough + "】 【" + sauce + "】 【" + name + "】";
     }
 
 }

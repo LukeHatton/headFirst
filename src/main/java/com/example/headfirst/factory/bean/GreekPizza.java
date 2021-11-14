@@ -9,27 +9,30 @@ package com.example.headfirst.factory.bean;
  * @author : Zhao Li
  */
 public class GreekPizza extends Pizza{
+
+    {
+        name = "希腊披萨";
+        dough = "默认面饼";
+        sauce = "默认酱料";
+    }
+
     @Override
     public void prepare() {
         super.prepare();
-        System.out.println("希腊披萨");
     }
 
     @Override
     public void bake() {
         super.bake();
-        System.out.println("希腊披萨");
     }
 
     @Override
     public void cut() {
         super.cut();
-        System.out.println("希腊披萨");
     }
 
     @Override
     public void box() {
         super.box();
-        System.out.println("希腊披萨");
     }
 }
