@@ -1,5 +1,6 @@
 package com.example.headfirst;
 
+import com.example.headfirst.decorator.LowerCaseInputStream;
 import com.example.headfirst.decorator.beverage.Beverage;
 import com.example.headfirst.decorator.beverage.DarkRoast;
 import com.example.headfirst.decorator.beverage.Espresso;
@@ -17,7 +18,12 @@ import com.example.headfirst.strategy.duck.fly.FlyRocket;
 import com.example.headfirst.watcher.bean.WeatherInfo;
 import com.example.headfirst.watcher.interFace.WeatherData;
 import com.example.headfirst.watcher.observer.CurrentConditionDisplay;
+import lombok.Cleanup;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 
 /**
  * Package: com.example.headfirst
@@ -72,8 +78,10 @@ public class SimpleTest {
     }
 
     /* 装饰者测试 */
+    @SneakyThrows
     @Test
     public void test03() {
+        /* ================咖啡================= */
         //一杯Espresso，输出描述与价钱
         Beverage espresso = new Espresso();
         System.out.println(espresso.getDescription() + ", $" + espresso.cost());
@@ -90,5 +98,19 @@ public class SimpleTest {
         Beverage withMocha = new Mocha(withSoy);
         Beverage withWhip = new Whip(withMocha);
         System.out.println(withWhip.getDescription() + ", $" + withWhip.cost());
+
+        /* ================ LowerCaseInputStream ================= */
+        // 使用自定义输入流包装器，将英文字符串转换为全小写
+        @Cleanup LowerCaseInputStream in =
+                new LowerCaseInputStream(
+                        new BufferedInputStream(
+                                new ByteArrayInputStream("IM ALL UPPER CASE STRING".getBytes())));
+        StringBuilder builder = new StringBuilder();
+        int c;
+        while ((c = in.read()) >= 0) {
+            builder.append((char) c);
+        }
+        System.out.println(builder);
+
     }
 }
