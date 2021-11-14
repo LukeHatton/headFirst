@@ -1,8 +1,5 @@
 package com.example.headfirst.factory.pizza;
 
-import com.example.headfirst.factory.bean.ChessPizza;
-import com.example.headfirst.factory.bean.GreekPizza;
-import com.example.headfirst.factory.bean.PepperoniPizza;
 import com.example.headfirst.factory.bean.Pizza;
 
 /**
@@ -12,22 +9,18 @@ import com.example.headfirst.factory.bean.Pizza;
  * <p>Date: 11/14/2021 15:37
  *
  * @author : Zhao Li
- * @version 0.1 简单实现，不适用任何模式
+ * @version 0.2 使用简单工厂(其实只是抽取代码)
  */
 public class OrderPizza {
 
+    SimplePizzaFactory simplePizzaFactory;
+
+    public OrderPizza(SimplePizzaFactory simplePizzaFactory) {
+        this.simplePizzaFactory = simplePizzaFactory;
+    }
+
     public Pizza orderPizza(String type) {
-        Pizza pizza = null;
-        switch (type) {
-            case "cheese":
-                pizza = new ChessPizza();
-            case "greek":
-                pizza = new GreekPizza();
-            case "pepperoni":
-                pizza = new PepperoniPizza();
-            default:
-        }
-        assert pizza != null;
+        Pizza pizza = simplePizzaFactory.createPizza(type);
         pizza.prepare();
         pizza.bake();
         pizza.cut();
