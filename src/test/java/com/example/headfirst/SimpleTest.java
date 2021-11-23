@@ -1,5 +1,11 @@
 package com.example.headfirst;
 
+import com.example.headfirst.command.Command;
+import com.example.headfirst.command.SimpleController;
+import com.example.headfirst.command.directive.DoorOpenCommand;
+import com.example.headfirst.command.directive.GarageDoor;
+import com.example.headfirst.command.directive.Light;
+import com.example.headfirst.command.directive.LightOnCommand;
 import com.example.headfirst.decorator.LowerCaseInputStream;
 import com.example.headfirst.decorator.beverage.Beverage;
 import com.example.headfirst.decorator.beverage.DarkRoast;
@@ -157,5 +163,22 @@ public class SimpleTest {
 
         String str = null;
         System.out.println("gasjdgh" + null != str ? "" : "jkas");
+    }
+
+    /* 命令模式 */
+    @Test
+    public void test07() {
+        //命令的请求者，即客户client
+        SimpleController controller = new SimpleController();
+        //命令对象，即Command
+        Command lightOnCommand = new LightOnCommand(new Light());
+        Command doorOpenCommand = new DoorOpenCommand(new GarageDoor());
+
+        //由客户决定要执行的命令
+        controller.setCommand(lightOnCommand);      //电灯
+        //在客户方法中，调用命令对象.execute()，由命令对象真正执行客户的请求
+        controller.pressButton();
+        controller.setCommand(doorOpenCommand);     //车库门
+        controller.pressButton();
     }
 }
