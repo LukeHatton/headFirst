@@ -3,7 +3,7 @@ package com.example.headfirst.command.directive;
 /**
  * <p>project: headFirst
  * <p>ClassName: Light
- * <p>Description:指令类：电灯
+ * <p>Description:Receiver角色：电灯
  * <p>Date: 11/23/2021 21:12
  *
  * @author : Zhao Li

@@ -14,4 +14,9 @@ public interface Command {
      * 执行命令
      */
     void execute();
+
+    /**
+     * 撤销执行命令
+     */
+    void undo();
 }

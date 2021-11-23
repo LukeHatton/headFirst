@@ -4,26 +4,26 @@ import com.example.headfirst.command.Command;
 
 /**
  * <p>project: headFirst
- * <p>ClassName: DoorOpenCommand
- * <p>Description:指令类：打开车库门
- * <p>Date: 11/23/2021 21:40
+ * <p>ClassName: DoorCloseCommand
+ * <p>Description:指令类：关闭车库门
+ * <p>Date: 11/23/2021 22:37
  *
  * @author : Zhao Li
  */
-public class DoorOpenCommand implements Command {
+public class DoorCloseCommand implements Command {
     private final GarageDoor garageDoor;
 
-    public DoorOpenCommand(GarageDoor garageDoor) {
+    public DoorCloseCommand(GarageDoor garageDoor) {
         this.garageDoor = garageDoor;
     }
 
     @Override
     public void execute() {
-        garageDoor.up();
+        garageDoor.down();
     }
 
     @Override
     public void undo() {
-        garageDoor.down();
+        garageDoor.up();
     }
 }

@@ -154,7 +154,7 @@ public class SimpleTest {
 
     @Test
     public void test06() {
-        Veggies veggies[] = new Veggies[]{new BlackOlive(), new RedPepper(), new Onion()};
+        Veggies[] veggies = new Veggies[]{new BlackOlive(), new RedPepper(), new Onion()};
         String reduce = Arrays.stream(Optional.ofNullable(veggies).orElseGet(() -> new Veggies[]{}))
                 .map(Veggies::getName)
                 .reduce("", (a, b) -> a + b);
@@ -178,7 +178,9 @@ public class SimpleTest {
         controller.setCommand(lightOnCommand);      //电灯
         //在客户方法中，调用命令对象.execute()，由命令对象真正执行客户的请求
         controller.pressButton();
+        controller.pressUndoButton();
         controller.setCommand(doorOpenCommand);     //车库门
         controller.pressButton();
+        controller.pressUndoButton();
     }
 }

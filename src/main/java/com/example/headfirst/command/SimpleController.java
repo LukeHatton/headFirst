@@ -9,7 +9,11 @@ package com.example.headfirst.command;
  * @author : Zhao Li
  */
 public class SimpleController {
+    /* 接下来要执行的命令 */
     private Command slot;
+
+    /* 上一次执行的命令，用来执行撤销操作 */
+    private Command undoCommand = new NullCommand();
 
     /**
      * 设置插槽的命令
@@ -26,5 +30,13 @@ public class SimpleController {
      */
     public void pressButton() {
         slot.execute();
+        undoCommand = slot;
+    }
+
+    /**
+     * 按下撤销按钮，执行上一个命令的撤销动作
+     */
+    public void pressUndoButton(){
+        undoCommand.undo();
     }
 }
