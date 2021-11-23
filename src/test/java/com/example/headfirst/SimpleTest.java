@@ -2,6 +2,8 @@ package com.example.headfirst;
 
 import com.example.headfirst.command.Command;
 import com.example.headfirst.command.SimpleController;
+import com.example.headfirst.command.directive.CeilingFan;
+import com.example.headfirst.command.directive.CeilingFan.FanSpeedEnum;
 import com.example.headfirst.command.directive.DoorOpenCommand;
 import com.example.headfirst.command.directive.GarageDoor;
 import com.example.headfirst.command.directive.Light;
