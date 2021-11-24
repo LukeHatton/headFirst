@@ -47,19 +47,23 @@ public class CeilingFan {
         this.speed = speed;
     }
 
-    public void High() {
+    public void high() {
+        System.out.println("fan speed set to high");
         speed = FanSpeedEnum.HIGH.speed;
     }
 
     public void medium() {
+        System.out.println("fan speed set to medium");
         speed = FanSpeedEnum.MEDIUM.speed;
     }
 
     public void low() {
+        System.out.println("fan speed set to low");
         speed = FanSpeedEnum.LOW.speed;
     }
 
     public void off() {
+        System.out.println("fan speed set to off");
         speed = FanSpeedEnum.OFF.speed;
     }
 

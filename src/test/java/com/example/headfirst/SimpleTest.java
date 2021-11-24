@@ -4,6 +4,8 @@ import com.example.headfirst.command.Command;
 import com.example.headfirst.command.SimpleController;
 import com.example.headfirst.command.directive.CeilingFan;
 import com.example.headfirst.command.directive.CeilingFan.FanSpeedEnum;
+import com.example.headfirst.command.directive.CeilingFanCommand;
+import com.example.headfirst.command.directive.CeilingFanCommandFactory;
 import com.example.headfirst.command.directive.DoorOpenCommand;
 import com.example.headfirst.command.directive.GarageDoor;
 import com.example.headfirst.command.directive.Light;
@@ -182,6 +184,24 @@ public class SimpleTest {
         controller.pressButton();
         controller.pressUndoButton();
         controller.setCommand(doorOpenCommand);     //车库门
+        controller.pressButton();
+        controller.pressUndoButton();
+        System.out.println("====================");
+        /* ---------------- 动态代理生成风扇操作命令 ----------------- */
+        //在执行反射invoke方法调用时出问题了。代理类的创建没有抛出异常
+        //确定报错原因了：在进行方法上的注解判断时，只能找到接口的方法，而找不到实际类型方法上的注解
+        CeilingFan ceilingFan = new CeilingFan("客厅", 0);
+        Command fanHighCommand = CeilingFanCommandFactory.getProxyInstance(Command.class, CeilingFanCommand.class, ceilingFan, FanSpeedEnum.HIGH);
+        Command fanMediumCommand = CeilingFanCommandFactory.getProxyInstance(Command.class, CeilingFanCommand.class, ceilingFan, FanSpeedEnum.MEDIUM);
+        Command fanLowCommand = CeilingFanCommandFactory.getProxyInstance(Command.class, CeilingFanCommand.class, ceilingFan, FanSpeedEnum.LOW);
+        Command fanOffCommand = CeilingFanCommandFactory.getProxyInstance(Command.class, CeilingFanCommand.class, ceilingFan, FanSpeedEnum.OFF);
+        controller.setCommand(fanHighCommand);
+        controller.pressButton();
+        controller.setCommand(fanMediumCommand);
+        controller.pressButton();
+        controller.setCommand(fanLowCommand);
+        controller.pressButton();
+        controller.setCommand(fanOffCommand);
         controller.pressButton();
         controller.pressUndoButton();
     }

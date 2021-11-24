@@ -1,5 +1,7 @@
 package com.example.headfirst.command;
 
+import com.example.headfirst.command.directive.SpeedChange;
+
 /**
  * <p>project: headFirst
  * <p>ClassName: Command
@@ -13,6 +15,7 @@ public interface Command {
     /**
      * 执行命令
      */
+    @SpeedChange
     void execute();
 
     /**
