@@ -28,6 +28,7 @@ import com.example.headfirst.factory.ingredient.pizzafactory.NewPizzaStore;
 import com.example.headfirst.factory.pizza.ChicagoPizzaStore;
 import com.example.headfirst.factory.pizza.NYPizzaStore;
 import com.example.headfirst.factory.pizza.PizzaStore;
+import com.example.MyMIDIPlayer;
 import com.example.headfirst.strategy.duck.Duck;
 import com.example.headfirst.strategy.duck.FlyableDuck;
 import com.example.headfirst.strategy.duck.GreenHeadDuck;
@@ -46,6 +47,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.Scanner;
 
 /**
  * Package: com.example.headfirst
@@ -204,5 +206,15 @@ public class SimpleTest {
         controller.setCommand(fanOffCommand);
         controller.pressButton();
         controller.pressUndoButton();
+    }
+
+    @Test
+    public void test08() {
+        System.out.println("Enter the number of notes to be played: ");
+        Scanner in = new Scanner(System.in);
+        int numOfNotes = in.nextInt();
+
+        MyMIDIPlayer player = new MyMIDIPlayer();
+        player.setUpPlayer(numOfNotes);
     }
 }
